@@ -1,0 +1,54 @@
+var name = "JoJungyun"
+let birthyear = 1995
+
+name = "조중윤" // 변수를 바꾸는 것은 가능
+//birthyear = 2000 상수를 바꾸는 것은 컴파일에러!
+
+Swift는 정적 타이핑 언어: 변수나 상수를 정의할 때 자료형(타입)이 어떤 것인지를 명시
+(Type Annotation)
+var name: String = "JoJungyun"
+let birthyear: Int = 1995
+var height: Float = 180.1
+
+Swift에서는 타입을 굉장히 엄격하게 다루기에 다른 자료형끼리 연산불가
+ex) birthyear + height //컴파일 에러
+ex2) Float(birthyear) + height // 2175.1
+ex3)String(birthyear) + "년에 태어난 " + name + "아 안녕" // 1992년에 태어난 조중윤아 안녕
+ex4)"\(birthyear)에 태어난 \(name)아 안녕!"   //1992년에 태어난 조중윤아 안녕
+
+Type Inferenece(타입추론): 타입을 명시하지 않고도 값을 가지고 정적 타이핑을 할 수 있게 해주는 것
+ex)var name = "jojungyun"
+ex2)let birthyear = 1995
+
+Array and Dictionary
+ex)var languages = ["Swift" + + "Objective-C" + "Python"]
+ex2)var capitials = [
+  "한국": "서울",
+  "일본": "도쿄",
+  "중국": "베이징",
+  ]
+
+배열과 딕셔너리에의 접근"[]" 사용
+languages[0] // Swift
+languages[1] = "Ruby"
+
+capitlas["한국"] // 서울
+capitals["프랑스"] = "파리"
+cf)다른 상수와 마찬가지로 배열과 딕셔너리를 let으로 정의하면 값을 수정할 수 없음.
+
+Array나 Dictionary에 타입을 정의하고 싶다면?
+ex)var languages: [String] = ["Swift" + + "Objective-C" + "Python"]
+ex)var capitals: [String: String] = [
+  "한국": "서울",
+  "일본": "도쿄",
+  "중국": "베이징",
+]
+
+빈 Array나 Dictionary의 정의
+var languages: [String] = []
+var capitals: [String: String] = [:]
+
+or
+
+var languages = [String]()
+var capitals = [String: String]() // ()는 생성자(initializer)를 호출하는 의미
