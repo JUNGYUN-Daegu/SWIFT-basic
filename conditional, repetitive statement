@@ -1,0 +1,47 @@
+var age = 19
+var student =""
+
+if age >= && age <14{
+  student = "초등학생"
+ }else if age < 17{
+ student = "중학생"
+ }else if age <20{
+ student = "대학생"
+ }else{
+ student = "기타"
+ }
+ 
+ student // 고등학생
+ 
+ if문의 조건절에는 값이 정확하게 참 혹은 거짓으로 나오는 Bool타입을 사용해야한다.
+ 
+ switch age{
+ case 8..<14:
+  student = "초등학생"
+ case 14..<17:
+  student = "중학생"
+ case 17..<20:
+  student = "고등학생"
+ default:
+  student = "기타"
+  }
+  8..<14 와 같이 범위안에 age가 포함되어있는지 검사가능(패턴매칭?)
+  
+  
+  for i in 0..<100{
+  i
+  }
+  라는 반복문에서 i를 사용하지 않는데 단순한 반복을 하고 싶다면,
+  
+  for _ in 0..<10{
+    print("Hello!")
+   }
+   
+   _키워드는 어디서나 변수 이름 대신에 사용할 수 있음
+   
+   while문
+   
+   var i = 0
+   while i <100{
+    i += 1
+   }
