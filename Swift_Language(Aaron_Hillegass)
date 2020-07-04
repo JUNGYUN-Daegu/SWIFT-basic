@@ -1,0 +1,142 @@
+import UIKit
+
+var str = "Hello, playground"
+str = "Hello, Swift"
+let constStr = str
+//타입추론
+
+var nextYear: Int
+var bodyTemp: Float
+var hadPet: Bool
+//타입설정: 변수의 값이 정해지지 않은 경우 등
+
+//var arrayOfInt: Array<Int>//기본적인 컬렉션 선언 방법
+//축약형은
+var arrayOfInts: [Int]
+var dictionaryOfCapitalsByCountry: [String:String]//or Dictionary<String,String>
+
+
+// ↓일부 기본 타임은 아무런 인자가 없을 때 빈 리터럴을 반환하는 이니셜라이저를 가지고 있다.
+let emptyString = String()
+let emptyArrayOfInts = [Int]()
+let emptySetOfFloats = [Float]()
+//이니셜라이저를 타입의 새 인스턴스 내용을 초기화하는 역할을 한다.
+//이니셜라이저가 끝나면 그 인스턴스는 동작할 준비가 된다.
+//이니셜라이저로 새 인스턴스를 만들려면 타입명 다음에 괄호 쌍을 사용하고 필요하다면 인자를 더한다.
+
+//다른 타입들은 기본 값을 가진다.
+let defaultNumber = Int()
+let defaulBool = Bool()
+
+
+//타입은 여러 이니셜라이저를 가질 수 있다. 예를 들어 String은 Int를 받아 그 값을 기준으로 문자열을 만드는 이니셜라이저를 가지고 있다.
+
+let number = 42
+let meaningOfLife = String(number)
+
+//셋을 만들려면 배열 리터럴을 허용하는 set 이니셜라이저를 이용한다.
+let availableRoom = Set([205, 411, 412])
+
+//Float은 여러 이니셜라이저를 가지고 있다. 매개 변수가 없는 이니셜라이저는 기본 값을 가진 Float 인스턴스를 반환한다. 또한 부동 소수점 리터럴을 허용하는 이니셜라이저도 가지고 있다.
+
+let defaultFloat = Float()
+let floatFromLiteral = Float(3.14)
+
+//부동 소수점 리터럴은 타입 추론을 사용하면 Double이 기본 타입이 된다. 부동 소수점 리터럴을 갖는 다음 상수를 만든다.
+let easyPi = 3.14
+let floatFromDouble = Float(easyPi) //double이 기본 타입이지만 Float으로 만들어 줌
+let floatingPi: Float = 3.14
+
+//Property: 타입의 인스턴스와 연관된 값이다. 예를들어 String은 해당 문자열이 비어있는지의 여부를 알려주는 Bool 타입의 프로퍼티 isEmpty를 가진다. Array<T>는 배열의 요소 수를 알려주는 Int 타입의 프로퍼티 count를 가진다.
+
+var countingUp = ["One", "Two"]
+let secondElement = countingUp[1]
+countingUp.count
+
+countingUp.append("three")//배열 타입의 요소를 허용하고 그 값을 배열 끝에 추가한다.
+
+emptyString.isEmpty
+
+
+
+//Optional
+var reading1: Float?
+var reading2: Float?
+var reading3: Float?
+//초기 값을 주지 않으면 기본 값은 nil인 옵셔널을 생성
+
+reading1 = 9.8
+reading2 = 8.2
+reading3 = 2.3
+//이 옵셔널 Float들은 Float값을 할당한다고 해도 옵셔널이 아닌 Float처럼 사용할 수가 없다. 그전에 값이 nil일 가능성을 해결해야 옵셔널 변수의 값을 읽을 수 있다. 이를 옵셔널 unwrapping(언랩핑)이라고 한다.
+
+//언랩핑의 방법: 옵셔널 바인딩과 옵셔널 강제 언랩핑(더 위험한 방법)
+
+//let acgReading = (reading1 + reading2 + reading3)/3 :언래핑이 필요하기 때문에 오류가 발생
+let avgReading = (reading1! + reading2! + reading3!)/3//옵셔널이 nil이 아니라고 믿고 일반적인 float으로 여기고 처리 ->nil값이 있을 시 오류
+
+//그래서 나온게 옵셔널 바인딩
+var reading4: Float?
+var reading5: Float?
+var reading6: Float?
+
+reading4 = 9.6
+reading5 = 9.3
+reading6 = 9.2
+
+if let r1 = reading4,//옵셔널에 상응하는 비옵셔널 상수를 사용: 옵셔널이 값을 가지면 그 할당은 유효하니 비 옵셔널 상수를 사용하여 계속진행한다.
+    let r2 = reading5,
+    let r3 = reading6 {
+        let _ = (r1 + r2 + r3) / 3//왜 avgReading2라고하면 안될까?
+} else {
+    let _ = "Instrument reported a reading that was nil."
+}
+
+//배열에서 범위를 넘어선 서브스크립팅으로 트랩이 발생한다. 하지만 딕셔너리는 배열과 다르게 서브스크립팅 결과는 옵셔널이다.
+
+//ex)
+let nameByParkingSpace = [13: "Alice", 27: "Bob"]
+let space13Assignee: String? = nameByParkingSpace[13]
+let space42Assignee: String? = nameByParkingSpace[42]
+
+//Swift는 다른 언어에서 친숙한 if-else, while, for, for-in, repeat-while, swetch를 포함해 모든 제어 흐름문을 가지고 있다. 단 제어문의 표현식을 괄호로 감싸지 않아도 된다. Swift는 절에 꺾쇠괄호만을 필요로 한다.추가적으로 if와 while 같은 문장은 반드시 Bool로 평가돼야한다.
+
+for j in 0..<countingUp.count{ //Swift의 Range타입 : c의 for문과 다름
+    let string2 = countingUp[j]
+    //스트링사용 //좀 더 자세한 이해 필요
+}
+ 
+//열거형과 Switch문: 열거형은 값들의 집합으로 이루어진 타입이다.
+
+enum PieType{//enumerate:열거하다
+    case Apple
+    case Cherry
+    case Pecan
+}
+
+let favoritePie = PieType.Apple
+
+//Swift는 enum값들을 매칭하기에 좋은 강력한 switch문을 가지고 있다.
+
+let name: String
+switch favoritePie{
+case.Apple:
+    name = "Apple"
+case.Cherry:
+    name = "Cherry"
+case.Pecan:
+    name = "Pecan"
+}
+//Switch문은 모든 case를 포함해야 한다. switch 표현식의 경우 각각의 값은 명시적이든지 default:case든 반드시 처리되어야한다. Swift 문은 범위 뿐만 아니라 많은 타입과도 매칭할 수 있다.
+let osxVersion: Int = 9
+    switch osxVersion {
+    case 0...8:
+        print("a big cat")
+    case 9:
+        print("mavericks")
+    case 10:
+        print("yosemite")
+    default:
+        print("greeting, people of the future! what's new in 10. \(osxVersion)?")
+}
+
