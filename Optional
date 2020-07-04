@@ -103,8 +103,43 @@ if let age = optionalAge{
     isEmptyArray
     
     옵셔널 체이닝을 쓰면 이 코드를 더 간결하게 쓸 수 있음
-    ↓↓    
+    ↓↓ ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓   
     let isEmptyArray = array?.isEmpty == true
     옵셔널 체이닝은 옵셔널의 속성에 접근할 때, 옵셔널 바인딩 과정을 "?"키워드로 줄여주는 역할
+    array?.isEmpty의 결과로 나올 수 있는 값은 nil,true,flase가 된다. isEmpty의 반환값은 Bool인데,
+    옵셔널 체이닝으로 인해 Bool? 을 반환하도록 바뀐 것. 따라서 실제로 true인지 확인하려면, ==true를 해주어야 함.
+    
+    
+    
+    
+    
+    옵셔널 벗기기
+   옵셔널을 사용할 때마다 옵셔널 바인딩을 하는 것이 가장 바람직하지만 개발을 하다보면 분명히 값이 존재할 것임에도
+   불구하고 옵셔널로 사용해야 하는 경우가 생김. 이럴 때 옵셔널에 값이 있다고 가정하고 값에 바로 접근할 수 있도록
+   도와주는 키워드인 "!"를 붙여서 사용
+   
+   print(optionalEmail) // Optional("123123@gmail.com")
+   print(optionalEmail) // 123123@gmail.com
+   "!"를 사용할 때 옵셔널의 값이 nil인 경우에는 런타임 에러가 발생함.
+   ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+   var optionalEmail: String?
+   print(optionalEmail!) // 런타임 에러!
+   
+   
+   
+   
+   
+   Implicitly Unwrapped Optional(암묵적으로 벗겨진 옵셔널)
+   var email: String! = "123123@gmail.com"
+   print(email) // 123123@gmail.com
+   
+   옵셔널 벗기기와 마찬가지로 값이 없는데 접근을 시도하면 런타임 에러가 발생
+   var email: String!
+   print(email) //런타임 에러!
+   가급적이면 일반적인 옵셔널을 사용해서 정의하고, 옵셔널 바인딩 또는 옵셔널 체이닝을 통해 값에 접근하는 것이 바람직
+   
+   
+   
+    end
     
     
