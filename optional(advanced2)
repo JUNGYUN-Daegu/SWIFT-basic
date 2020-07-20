@@ -1,0 +1,13 @@
+
+struct MyOptional {
+    var property = 123
+    func method() {
+        print("I am the struct's method.")
+    }
+}
+
+//???
+
+//optional chaning
+//optional?.property : optional이 nil이 아니라면 프로퍼티로 진행하라
+//optioanl?.method: optional nil이 아니리면 method로 진행하라
