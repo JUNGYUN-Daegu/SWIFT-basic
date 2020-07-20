@@ -1,0 +1,29 @@
+
+let myOptional: String?
+
+myOptional = nil
+
+//Forced Unwrapping보다 좀 더 안전한 방법은 아래와 같이 if문을 쓰는 것. 하지만 항상 결과값에도 !를 써줘야함으로 귀찮다.
+if myOptional != nil {
+    let text: String = myOptional!
+    let text2: String = myOptional!
+}else{
+    print("myOptional was found to be nil")
+}
+
+//이것을 해결하기 위해 optional에 설치돼있는 기능 Optional Binding
+//데이터 타입을 살펴보면 safeOptioanl은 String, myOptional은 String?이다.
+if let safeOptional = myOptional {
+    let text: String = safeOptional
+    let text2: String = safeOptional
+}else{
+    print("myOptional was found to be nil.")
+}
+
+//만약 Optional Binding에서 nil값일 때 스킵하지 않고 default값을 설정하려면 어떻게 해야할까?
+//Nil Coalescing Operator
+// optional ?? defaultValue
+
+let text: String = myOptional ?? "I am the defaul value"
+
+print(text)
