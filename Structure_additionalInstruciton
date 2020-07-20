@@ -1,0 +1,25 @@
+
+struct Town {
+    let name: String
+    var citizens: [String]
+    var resources: [String:Int]
+    
+    //이니셜라이저와 스트럭쳐의 파라미터 이름 달라져야 함. 똑같이 intuitive하게 가려면 self를 붙여서 스트럭쳐 Town의 eventual 객체를 명시하면됨(structure인걸 명시한다고 생각)
+    init(name: String, people: [String], stats: [String: Int]) {
+        self.name = name
+        citizens = people
+        resources = stats
+    }
+    
+    func fortify(){
+        print("Defences increased!")
+    }
+}
+var anotherTown = Town(name: "Nameless Island", people: ["Tom Hanks"], stats: ["Coconuts": 100])
+
+var ghostTown = Town(name: "Ghosty McGhostface", people: [], stats: ["Thumbleweed": 1])
+
+anotherTown.citizens.append("Wilson")
+print(anotherTown.citizens)
+ghostTown.fortify()
+
