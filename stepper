@@ -1,0 +1,7 @@
+ @IBAction func stepperValueChanged(_ sender: UIStepper) {
+        //레이블은 안바뀌지만 값은 계속 바뀜
+        print(sender.value)
+        //Label에 숫자 데이터가 안들어가니 String데이터로 바꿔줌. 그리고 소수점 자리 수 제거
+        splitNumberLabel.text = String(format: "%.0f", sender.value)
+       
+    }
