@@ -1,0 +1,17 @@
+@IBAction func tipChanged(_ sender: UIButton) {
+        if sender.currentTitle ?? "10%" == "0%" {
+            zeroPctButton.isSelected = true
+            tenPctButton.isSelected = false
+            twentyPctButton.isSelected = false
+            tipAmount = 0.0
+        }else if sender.currentTitle ?? "10%" == "10%" {
+            zeroPctButton.isSelected = false
+            tenPctButton.isSelected = true
+            twentyPctButton.isSelected = false
+            tipAmount = 0.1
+        }else if sender.currentTitle ?? "10%" == "20%" {
+            zeroPctButton.isSelected = false
+            tenPctButton.isSelected = false
+            twentyPctButton.isSelected = true
+            tipAmount = 0.2
+        }
