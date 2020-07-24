@@ -1,0 +1,11 @@
+
+//keyboard appear
+While testing in the ios8 beta simulator, you may toggle between the "software keyboard" and "hardware keyboard" with ⌘+K.
+
+UPDATE: Since iOS Simulator 8.0, the shortcut is ⇧+⌘+K.
+
+//keyboard disappear, 여기서는 팁바꾸는 버튼을 클릭하면 키보드가 사라지게 함
+@IBAction func tipChanged(_ sender: UIButton) {
+        billTextField.endEditing(true)
+        
+    }무엇보다도 시뮬레이터 리본메뉴에 I/O 메뉴에 keyboard hardware software설정에 들어가 보면 된다.
