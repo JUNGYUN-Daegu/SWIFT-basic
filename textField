@@ -1,0 +1,9 @@
+텍스트 필드에선 IB액션 만들 필요 없이 그냥 결과물을 받으면 됨.
+yourTextField.text와 같이
+
+//optional을 이용해 text 필드에서 숫자데이터 받는 법
+@IBAction func calculatePressed(_ sender: UIButton) {
+        
+        let bill = Double(billTextField.text!) ?? 0.0
+        
+        }
