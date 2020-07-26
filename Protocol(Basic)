@@ -1,0 +1,65 @@
+protocol CanFly {
+    //semi bracket필요 없음에 주의!!
+    func fly()
+}
+
+
+class Bird {
+    
+    var isFemale = true
+    
+    func layEgg() {
+        if isFemale {
+            print("The bird makes a new bird in a shell.")
+        }
+    }
+ }
+
+class Eagle: Bird, CanFly {
+    func fly() {
+        print("The eagle flaps its wings and lifts off into the sky.")
+    }
+    
+    func soar() {
+        print("The eagle glides in the air using air currents.")
+    }
+}
+
+class Penguin: Bird {
+    func swim() {
+        print("The penguin paddles through the water.")
+    }
+}
+
+struct FlyingMuseum {
+    //protocol을 데이터 타입으로 씀
+    func flyingDemo(flyingObject: CanFly) {
+        flyingObject.fly()
+    }
+}
+//struct에도 CanFly 프로토콜 쓸 수 있음( 클래스 상속이랑 다름)
+struct Airplane: CanFly {
+    func fly() {
+        print("The airplane uses its engine to lift of into the air.")
+    }
+}
+
+let myEagle = Eagle()
+let myPenguin = Penguin()
+let myPlane = Airplane()
+myEagle.fly()
+myPlane.fly()
+
+let museum = FlyingMuseum()
+//myEagle은 Bird클래스를 상속받은 Eagle 클래스이기에 flyingDemo에 쓸 수 있었음
+//museum.flyingDemo(flyingObject: myEagle)
+//museum.flyingDemo(flyingObject: myPenguin)
+//오류가 뜸. Bird상위 클래스를 상속하지 않기 때문에
+//museum.flyingDemo(flyingObject: myPlane)
+//펭귄을 날 수 없는데 날 수 있다고 나온다. 우리가 inheritance와 subclassing에 너무 의지하고 있기 때문임.
+museum.flyingDemo(flyingObject: myPlane)//eagle되지만 penguin은 protocol없기 때문에 안됨
+
+//만약에 class의 상속으로 '날수있다'라는 fly() 함수를 분배하려면 bird에서 airPlane처럼 성격이 다른 객체에게 상속하는데 어려움이 있다. '알을 낳다"라는 layEgg() 메소드도 같이 분배되기 때문. 그리고 Penguin처럼 날지 못하는 하위 클래스의 경우 fly라는 함수가 필요없다. 이럴때 Protocol을 이용해서 코드를 좀 더 깔끔하게 만들 수 있다.
+
+//프로토콜 모양
+//class MyClass:  SuperClass, FirstProtocol, AnotherProtocol {}
