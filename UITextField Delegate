@@ -18,6 +18,7 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func searchPressed(_ sender: UIButton) {
         print(searchTextField.text!)
+        searchTextField.endEditing(true)
         
     }
     //delegate 덕분인지 자동 생성됨
@@ -26,6 +27,8 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print(searchTextField.text!)
         return true
+        //키보드 사라지게 하는것
+        searchTextField.endEditing(true)
         
     }
     
