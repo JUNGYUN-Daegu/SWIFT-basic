@@ -1,0 +1,33 @@
+import UIKit
+
+class WeatherViewController: UIViewController, UITextFieldDelegate {
+
+    @IBOutlet weak var conditionImageView: UIImageView!
+    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var searchTextField: UITextField!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //self = current class = current view controller
+        //여기서 delegate = current class
+        //delegate가 self(view controller)와 interact할 수 있게 해줌
+        //"hey view controller, user just typed something", or "hey view controller, user tried to tap elsewhere, should I let them deselect me?"
+        searchTextField.delegate = self
+        
+    }
+    @IBAction func searchPressed(_ sender: UIButton) {
+        print(searchTextField.text!)
+        
+    }
+    //delegate 덕분인지 자동 생성됨
+    //return버튼 눌렸을 때의 액션설정
+    //이제 리턴키를 누르면 값이 입력됨
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print(searchTextField.text!)
+        return true
+        
+    }
+    
+}
+
