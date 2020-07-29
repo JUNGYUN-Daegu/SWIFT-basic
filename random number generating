@@ -1,0 +1,17 @@
+func gettingNewNumbers() {
+        var numberArray = [Int]()
+        numberArray.append(Int.random(in: 1..<46))
+        for _ in 1..<6{
+            var randomNumber = 0
+           repeat{
+            randomNumber = Int.random(in: 1...45)
+           }while numberArray.contains(randomNumber) == true
+            numberArray.append(randomNumber)
+           }
+           first = numberArray[0]
+           second = numberArray[1]
+           third = numberArray[2]
+           fourth = numberArray[3]
+           fifth = numberArray[4]
+           sixth = numberArray[5]
+       }
