@@ -27,3 +27,18 @@ if let safeOptional = myOptional {
 let text: String = myOptional ?? "I am the defaul value"
 
 print(text)
+
+//Optional Chanining은 optional을 다루는 grace한 방법
+
+struct Device {
+let color: String
+let name: String
+let price: Int
+}
+
+let myPhone = Device?
+//myPhone의 가격이 설정되어 있을 때만 devicePrice 가격반영
+//nil값이면 nil값 반영
+//옵셔널 체이닝 쓸 때 divicePrice도 옵셔널로 자동 지정된다.
+let devicePrice = myPhone?.price
+
